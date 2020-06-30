@@ -1,0 +1,21 @@
+.nav{
+  background-color: #20c997;
+  color:white;
+  height:150px;
+}
+h1{
+  margin:40px 60px;
+}
+.formclass{
+  width:500px;
+  margin:auto;
+}
+.card{
+  width:500px;
+  margin:auto;
+  height:150px;
+}
+.card-body{
+  display:flex;
+  align-self: stretch;
+}

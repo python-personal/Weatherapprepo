@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'weatherapp/main.css' %}">
+  </head>
+  <body>
+<div class="nav">
+  <h1>What's the weather like?</h1>
+</div>
+<div class="formclass mt-5">
+  {% for message in messages %}
+  {%if message.error%}
+  <div class="alert alert-danger">
+        {{ message }}
+  </div>
+  {% else %}
+  <div class="alert alert-success alert-dismissible">
+        {{ message }}
+  </div>
+  {% endif %}
+{% endfor %}
+  <form class="" method="POST">
+    {%csrf_token%}
+    <div class="input-group">
+{{form.name}}
+    <div class="input-group-append">
+      <button type="submit" name="button" class="btn btn-primary" id="btnGroupAddon">Add</button>
+    </div>
+  </div>
+
+  </form>
+
+</div>
+
+{% for i in weather_data%}
+<div class="card mt-5">
+<div class="card-body">
+     <img src="http://openweathermap.org/img/w/10d.png" alt="Image" width='80px' height='80px'><br>
+<div class="right">
+  <h4>{{i.city}}</h4>
+  <p>{{i.temperature}}</p>
+    <p>{{i.description}}</p>
+
+</div>
+<a href="{% url 'delete' i.city %}"> <button  class='delete'>x</button></a>
+  </div>
+</div>
+{% endfor%}
+  </body>
+</html>
